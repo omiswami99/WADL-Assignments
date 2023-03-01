@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Assignment 1B</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <form class="col-4 mx-auto pt-5">
+                <h1 class="text-center">Assignment 1B</h1><br><br>
+                <div class="mb-3">
+                    <label for="exampleInputText" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="exampleInputText" aria-describedby="name" name="fname">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputText2" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="exampleInputText2" aria-describedby="name" name="lname">
+                </div>
+                <button type="button" onclick="submitForm()" class="btn btn-primary">Submit</button>
+                <br><hr>
+                <small class="small text-success" id="h1tag"></small>
+            </form>
+        </div>        
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+<script>
+
+    function submitForm() {
+    
+        var name = $('input[name=fname]').val();
+        var lname = $('input[name=lname]').val();
+        // console.log(name + lname);
+        $.ajax({
+            type: "POST",
+            url: 'http://localhost:3000/',
+            data: JSON.stringify({
+                name, lname
+            }),
+            contentType: "application/json; charset=utf-8",
+            traditional: true,
+            success: function (data) {
+                // console.log(data.name);
+                document.getElementById("h1tag").innerHTML = "Your full name is : " + data.name + " " + data.lname;
+            }
+        })
+    }
+</script>
+
+</html>

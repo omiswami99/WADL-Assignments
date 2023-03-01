@@ -1,0 +1,10 @@
+1. Install node
+2. Create project: npm init -y
+3. Install express: npm install express
+4. Run project: node index.js
+
+
+Reference: 
+https://www.youtube.com/watch?v=O6ShfAidIXw
+
+https://github.com/sumitkawale2/wadl/tree/master/assignment2
